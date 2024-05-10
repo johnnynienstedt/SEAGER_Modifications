@@ -16,10 +16,7 @@ Created on Tue Feb 20 11:20:59 2024
 # to 2023. The goal of this script is to set a besaline for a) the overall run
 # values (batter POV) of pitches as a function of location and b) the run 
 # values for swings and takes at each location. This script takes approximately
-# 8 hours to run on an RPI 5.
-
-
-# user must install pandas if not already installed
+# 8 hours to run.
 
 import requests
 import pandas as pd
