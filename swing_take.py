@@ -11,12 +11,10 @@ Created on Fri Feb 23 11:09:22 2024
 # Johnny Nienstedt 2/23/24
 #
 
-# This is a companion program to player_heatmap.py. This program determines if
+# This program follows league_rv.py and player_heatmap.py. This program determines if
 # a player swung at or took every pitch they saw in the desired season, by count
-# and location. These programs together will give a grade for how well the 
-# player plays to his strengths, i.e. swings at pitches he can hit and takes
-# those he struggles to hit.
-
+# and location. These programs together will give a grade for the player's swing
+# decisions, both in relation to league RV (classic) and his own strenghts (player).
 
 import pandas as pd
 import requests
