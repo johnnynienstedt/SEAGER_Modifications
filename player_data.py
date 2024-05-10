@@ -14,7 +14,8 @@ Created on Fri Feb 23 11:09:22 2024
 # This script mirrors league_data.py but scrapes data for each player rather
 # than the whole league. The goals are to set a baseline run value for each
 # batter and to find their areas of strength and weakness in the strike zone.
-
+# IIRC, this program takes about 12 hours to run with an uninterrupted internet
+# connection.
 
 import pandas as pd
 import requests
