@@ -15,6 +15,8 @@ Created on Fri Feb 23 11:09:22 2024
 # a player swung at or took every pitch they saw in the desired season, by count
 # and location. These programs together will give a grade for the player's swing
 # decisions, both in relation to league RV (classic) and his own strenghts (player).
+# This program takes about 20 hours to run, although an interrupted internet connection
+# will crash it, so ethernet or strong wifi is recommended.
 
 import pandas as pd
 import requests
