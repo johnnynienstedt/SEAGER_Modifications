@@ -13,12 +13,13 @@ Created on Mon Feb 26 22:05:01 2024
 # Changed to rolling method 3/15
 #
 
-# This is a companion program to player_data.py This program numerically solves
+# This program follows player_data.py This program numerically solves
 # laplace's equation for a 'heat map' of the strike zone for each player. This
 # is necessary because each player only has so much raw data, so it is better
 # to obtain that data in large zones and then mesh the data together to get a 
 # more sensitive model. After icorporating np.roll() for numerical solving,
-# this program only takes a couple minutes to run.
+# this program only takes a couple minutes to run. Be aware, this program 
+# produces CSV files around 700 MB.
 
 import numpy as np
 import pandas as pd
