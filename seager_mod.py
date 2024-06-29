@@ -11,7 +11,7 @@ Created on Sun Jun 16 12:30:00 2024
 # Johnny Nienstedt 2/20/24
 #
 # Major update - switched from requests to pybaseball 6/16/24
-# Runtime down to ~10 minutes from scratch, 5-7 minutes with caching
+# Runtime down to ~30 minutes
 #
 
 # The goal of this script is to evaluate player swing decisions in the context
@@ -935,6 +935,8 @@ def swing_take(year, pitch_data, league_rv, player_rv):
         csrv = c_good_swing_runs + c_bad_swing_runs
         ctrv = c_good_take_runs + c_bad_take_runs
         n_p = round(ns + nt)
+        c_sel = (c_good_takes/(c_good_takes + c_bad_swings))*100
+        c_ag = (c_bad_takes/(c_bad_takes + c_good_swings))*100
         
         c_rows.append(
             {
@@ -964,13 +966,19 @@ def swing_take(year, pitch_data, league_rv, player_rv):
                 'EXP_RV': round(classic_xrv, 1),
                 'TOT_RV': round(csrv + ctrv, 1),
                 'SWTR': round(csrv + ctrv - classic_xrv, 1),
-                'SWTR_Per650': round((csrv + ctrv - classic_xrv)/n_p*2542, 1)
+                'SWTR_Per650': round((csrv + ctrv - classic_xrv)/n_p*2542, 1),
+                'Correct%': round((c_good_swings + c_good_takes)/n_p*100, 1),
+                'Selective%': round(c_sel, 1),
+                'OverAgression%': round(c_ag, 1),
+                'SEAGER': round(c_sel - c_ag, 1)
             }
         )
         
         
         psrv = p_good_swing_runs + p_bad_swing_runs
         ptrv = p_good_take_runs + p_bad_take_runs
+        p_sel = (p_good_takes/(p_good_takes + p_bad_swings))*100
+        p_ag = (p_bad_takes/(p_bad_takes + p_good_swings))*100
         
         p_rows.append(
             {
@@ -1000,7 +1008,11 @@ def swing_take(year, pitch_data, league_rv, player_rv):
                 'EXP_RV': round(player_xrv, 1),
                 'TOT_RV': round(psrv + ptrv, 1),
                 'SWTR': round(psrv + ptrv - player_xrv, 1),
-                'SWTR_Per650': round((psrv + ptrv - player_xrv)/n_p*2542, 1)
+                'SWTR_Per650': round((psrv + ptrv - player_xrv)/n_p*2542, 1),
+                'Correct%': round((p_good_swings + p_good_takes)/n_p*100, 1),
+                'Selective%': round(p_sel, 1),
+                'OverAgression%': round(p_ag, 1),
+                'SEAGER': round(p_sel - p_ag, 1)
             }
         )
     
@@ -1069,6 +1081,3 @@ full_process(2021)
 full_process(2022)
 full_process(2023)
 full_process(2024)
-
-
-        
